@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Batumi Casino Benchmark</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     body {
@@ -69,5 +70,17 @@
 </head>
 <body>
   <div id="root"></div>
+  <script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/";
+        });
+        window.netlifyIdentity.open();
+      }
+    });
+  }
+</script>
 </body>
 </html>
